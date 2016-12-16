@@ -1,0 +1,12 @@
+name: INDROP
+channels:
+- bioconda
+- r
+dependencies:
+- python=2.7
+- numpy
+- scipy
+- pandas
+- matplotlib
+- pyyaml
+- pysam

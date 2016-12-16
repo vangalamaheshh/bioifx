@@ -1,0 +1,67 @@
+Database (TP53) DNA sequence:
+----------------------------
+TP53 DNA sequence is downloaded from "http://www.ncbi.nlm.nih.gov/nuccore/23491728?report=fasta"
+
+Generate STAR index for p53:
+---------------------------
+/media/mvangala/data/software/bioinfo/alignment/STAR-RNA/STAR_2.3.0e/STAR --runMode genomeGenerate --genomeDir /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/p53 --genomeFastaFiles /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta --runThreadN 6
+
+Alignment of reads to referece sequence (1pass):
+-----------------------------------------------
+cd /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/1pass && /media/mvangala/data/software/bioinfo/alignment/STAR-RNA/STAR_2.3.0e/STAR --genomeDir /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/p53 --readFilesIn /media/mvangala/150123_M01418_0385_000000000-ACGU8/Sample_012315_4C0_ET1565/012315_4C0_ET1565_TAACGCTG_L001_R1_001.fastq.gz /media/mvangala/150123_M01418_0385_000000000-ACGU8/Sample_012315_4C0_ET1565/012315_4C0_ET1565_TAACGCTG_L001_R2_001.fastq.gz --runThreadN 6 --readFilesCommand zcat
+
+Generate STAR 2pass index using --sjdbFileChrStartEnd /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/1pass/SJ.out.tab file:
+------------------------------------------------------------------------------------------------------------------------------
+ /media/mvangala/data/software/bioinfo/alignment/STAR-RNA/STAR_2.3.0e/STAR --runMode genomeGenerate --genomeDir /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/p53_2pass --genomeFastaFiles /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta --sjdbFileChrStartEnd /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/1pass/SJ.out.tab --sjdbOverhang 75 --runThreadN 6
+
+Alignment of reads to referece sequence (p53_2pass):
+----------------------------------------------------
+cd /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/2pass && /media/mvangala/data/software/bioinfo/alignment/STAR-RNA/STAR_2.3.0e/STAR --genomeDir /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/p53_2pass --readFilesIn /media/mvangala/150123_M01418_0385_000000000-ACGU8/Sample_012315_4C0_ET1565/012315_4C0_ET1565_TAACGCTG_L001_R1_001.fastq.gz /media/mvangala/150123_M01418_0385_000000000-ACGU8/Sample_012315_4C0_ET1565/012315_4C0_ET1565_TAACGCTG_L001_R2_001.fastq.gz --runThreadN 6 --readFilesCommand zcat
+
+==========================================================================
+
+Picard processing steps:
+------------------------
+
+AddOrReplaceReadGroups:
+-----------------------
+java -jar /media/mvangala/data/software/bioinfo/format/picard-tools-1.115/AddOrReplaceReadGroups.jar I=/media/mvangala/mbcf_storage_aberdeen/SNP/analysis/2pass/Aligned.out.sam O=/media/mvangala/mbcf_storage_aberdeen/SNP/analysis/picard/rg_added_sorted.bam SO=coordinate RGID=id RGLB=library RGPL=platform RGPU=machine RGSM=sample
+
+Mark Duplicates:
+----------------
+java -jar /media/mvangala/data/software/bioinfo/format/picard-tools-1.115/MarkDuplicates.jar I=/media/mvangala/mbcf_storage_aberdeen/SNP/analysis/picard/rg_added_sorted.bam O=/media/mvangala/mbcf_storage_aberdeen/SNP/analysis/picard/dedupped.bam CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M=/media/mvangala/mbcf_storage_aberdeen/SNP/analysis/picard/output.metrics
+
+============================================================================
+
+GATK:
+-----
+Create Fasta sequence dictionary file:
+--------------------------------------
+java -jar /media/mvangala/data/software/bioinfo/format/picard-tools-1.115/CreateSequenceDictionary.jar R=/media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta O=/media/mvangala/mbcf_storage_aberdeen/SNP/p53.dict
+
+Create Fasta sequence index file:
+--------------------------------
+/usr/bin/samtools faidx /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta
+
+Split_N_Trim Reads:
+-------------------
+java -jar /media/mvangala/data/software/bioinfo/frameworks/GATK/GenomeAnalysisTK.jar -T SplitNCigarReads -R /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta -I /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/picard/dedupped.bam -o /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/split_N_trim/split.bam -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60 -U ALLOW_N_CIGAR_READS
+
+Base Recalibration: (Won't work with out providing a VCF file with known SNPs)
+-------------------
+java -Xmx40g -jar /media/mvangala/data/software/bioinfo/frameworks/GATK/GenomeAnalysisTK.jar -T BaseRecalibrator -I /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/split_N_trim/split.bam -R /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta -o /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/base_recalibration/recal_data.table
+
+Variant Calling:
+----------------
+java -jar /media/mvangala/data/software/bioinfo/frameworks/GATK/GenomeAnalysisTK.jar -T HaplotypeCaller -R /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta -I /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/split_N_trim/split.bam -dontUseSoftClippedBases -stand_call_conf 20.0 -stand_emit_conf 20.0 -o /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/variant_calling/output.vcf
+
+Variant Filtering:
+------------------
+java -jar /media/mvangala/data/software/bioinfo/frameworks/GATK/GenomeAnalysisTK.jar -T VariantFiltration -R /media/mvangala/mbcf_storage_aberdeen/SNP/p53.fasta -V /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/variant_calling/output.vcf -window 35 -cluster 3 -o /media/mvangala/mbcf_storage_aberdeen/SNP/analysis/variant_filtering/filtered_output.vcf
+
+
+
+
+
+
+

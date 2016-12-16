@@ -1,0 +1,12 @@
+# vim: syntax=python tabstop=4 expandtab
+# coding: utf-8
+# Yaml file for Rat (RN6)
+
+directory: /zfs/cores/mbcf/mbcf-storage/NS500/analysis/151109_NS500144_0373_AHLCKLBGXX_JW2415
+metasheet: JW2415_coldata.csv
+star_index: /zfs/cores/mbcf/mbcf-storage/devel/umv/ref_files/rat/Rattus_norvegicus/UCSC/rn6/Sequence/STARIndex_with_ERCC
+gtf_file: /zfs/cores/mbcf/mbcf-storage/devel/umv/ref_files/rat/Rattus_norvegicus/UCSC/rn6/Annotation/Genes/genes_with_ERCC.gtf
+bed_file: /zfs/cores/mbcf/mbcf-storage/devel/umv/ref_files/rat/Rattus_norvegicus/UCSC/rn6/Annotation/Genes/rn6_genes.bed
+ref_fasta: /zfs/cores/mbcf/mbcf-storage/devel/umv/ref_files/rat/Rattus_norvegicus/UCSC/rn6/Sequence/WholeGenomeFasta/genome_with_ERCC.fa
+stranded: true
+star_rRNA_index: /zfs/cores/mbcf/mbcf-storage/devel/umv/ref_files/rat/Rattus_norvegicus/Ensembl/Sequence/non_coding_RNA/STAR_index/

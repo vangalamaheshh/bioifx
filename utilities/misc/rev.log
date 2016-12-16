@@ -1,0 +1,100 @@
+nohup: ignoring input
+Started analysis of 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 5% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 10% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 15% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 20% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 25% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 30% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 35% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 40% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 45% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 50% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 55% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 60% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 65% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 70% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 75% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 80% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 85% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 90% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Approx 95% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+Analysis complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz
+TrimmomaticSE: Started with arguments: -threads 8 -phred33 /media/mvangala/REV/092314_REV-PrepX_ES1309_CGATG_L001_R1_001.fastq.gz /media/mvangala/mbcf_storage_aberdeen/Engelman/REV/filtered_reads/092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz ILLUMINACLIP:/zfs/cores/mbcf/mbcf-storage/devel/umv/software/Trimmomatic-0.32/adapters/TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+Sep 30, 2014 9:36:51 PM org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer makeIlluminaClippingTrimmer
+SEVERE: null
+java.io.FileNotFoundException: /zfs/cores/mbcf/mbcf-storage/devel/umv/software/Trimmomatic-0.32/adapters/TruSeq3-SE.fa (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:107)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:70)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:27)
+	at org.usadellab.trimmomatic.TrimmomaticSE.run(TrimmomaticSE.java:282)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:40)
+
+Input Reads: 419103 Surviving: 418088 (99.76%) Dropped: 1015 (0.24%)
+TrimmomaticSE: Completed successfully
+Started analysis of 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 5% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 10% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 15% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 20% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 25% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 30% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 35% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 40% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 45% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 50% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 55% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 60% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 65% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 70% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 75% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 80% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 85% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 90% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Approx 95% complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+Analysis complete for 092314_REV-PrepX_ES1309_CGATG_L001_R1_001.filtered.fastq.gz
+uclust v1.2.22q
+(C) Copyright 2009-10 Robert C. Edgar
+Licensed ONLY for use in PyNAST and QIIME.
+00:00 1.0Gb Reading split 0
+00:02 1.0Gb Writing ./split.0.tmp, 86Mb bytes
+00:05 1.0Gb 1 splits done
+00:05 1.5Mb Reading ./split.0.tmp
+00:08  87Mb Parsing sequence data
+00:08 138Mb 417.6k sequences
+00:08 138Mb Sorting ./split.0.tmp
+00:08 140Mb    0.0% Writing ./split_sorted.0.tmp00:09 140Mb    9.0% Writing ./split_sorted.0.tmp00:10 140Mb   48.2% Writing ./split_sorted.0.tmp00:11 140Mb   87.2% Writing ./split_sorted.0.tmp00:11 140Mb  100.0% Writing ./split_sorted.0.tmp
+00:11 1.6Mb Sorting done                        
+00:12  18Mb Merging
+00:12  18Mb 10000 seqs written00:12  18Mb 20000 seqs written00:12  18Mb 30000 seqs written00:12  18Mb 40000 seqs written00:12  18Mb 50000 seqs written00:12  18Mb 60000 seqs written00:12  18Mb 70000 seqs written00:12  18Mb 80000 seqs written00:13  18Mb 90000 seqs written00:13  18Mb 100000 seqs written00:13  18Mb 110000 seqs written00:13  18Mb 120000 seqs written00:13  18Mb 130000 seqs written00:13  18Mb 140000 seqs written00:13  18Mb 150000 seqs written00:13  18Mb 160000 seqs written00:14  18Mb 170000 seqs written00:14  18Mb 180000 seqs written00:14  18Mb 190000 seqs written00:14  18Mb 200000 seqs written00:14  18Mb 210000 seqs written00:14  18Mb 220000 seqs written00:14  18Mb 230000 seqs written00:14  18Mb 240000 seqs written00:15  18Mb 250000 seqs written00:15  18Mb 260000 seqs written00:15  18Mb 270000 seqs written00:15  18Mb 280000 seqs written00:15  18Mb 290000 seqs written00:15  18Mb 300000 seqs written00:15  18Mb 310000 seqs written00:15  18Mb 320000 seqs written00:16  18Mb 330000 seqs written00:16  18Mb 340000 seqs written00:16  18Mb 350000 seqs written00:16  18Mb 360000 seqs written00:16  18Mb 370000 seqs written00:16  18Mb 380000 seqs written00:16  18Mb 390000 seqs written00:16  18Mb 400000 seqs written00:16  18Mb 410000 seqs written00:16 1.6Mb                    
+00:16 1.6Mb Delete ./split_sorted.0.tmp
+00:16 1.6Mb 
+00:16 1.6Mb Merge done, 417614 seqs written
+uclust v1.2.22q
+(C) Copyright 2009-10 Robert C. Edgar
+Licensed ONLY for use in PyNAST and QIIME.
+00:00  20Mb    0.0% 00:01  23Mb    0.4% 883 clusters at 95.0%, size 2.0, id 98.5%00:02  29Mb    4.5% 3538 clusters at 95.0%, size 5.3, id 98.2%00:03  33Mb    9.5% 5507 clusters at 95.0%, size 7.1, id 98.2%00:04  36Mb   13.9% 7196 clusters at 95.0%, size 8.0, id 98.2%00:05  39Mb   17.9% 8784 clusters at 95.0%, size 8.4, id 98.2%00:06  40Mb   20.3% 9529 clusters at 95.0%, size 8.8, id 98.2%00:07  43Mb   24.5% 10895 clusters at 95.0%, size 9.3, id 98.2%00:08  45Mb   28.1% 12038 clusters at 95.0%, size 9.6, id 98.2%00:09  47Mb   32.0% 13215 clusters at 95.0%, size 10.0, id 98.2%00:10  49Mb   35.3% 14333 clusters at 95.0%, size 10.2, id 98.2%00:11  51Mb   38.8% 15350 clusters at 95.0%, size 10.4, id 98.2%00:12  52Mb   40.5% 15873 clusters at 95.0%, size 10.5, id 98.2%00:13  54Mb   43.6% 16801 clusters at 95.0%, size 10.7, id 98.2%00:14  57Mb   46.7% 17718 clusters at 95.0%, size 10.9, id 98.2%00:15  58Mb   49.8% 18633 clusters at 95.0%, size 11.0, id 98.2%00:16  60Mb   53.0% 19437 clusters at 95.0%, size 11.3, id 98.2%00:17  62Mb   56.0% 20283 clusters at 95.0%, size 11.4, id 98.2%00:18  63Mb   58.5% 21044 clusters at 95.0%, size 11.5, id 98.2%00:19  63Mb   59.9% 21467 clusters at 95.0%, size 11.5, id 98.2%00:20  65Mb   62.7% 22217 clusters at 95.0%, size 11.7, id 98.2%00:21  67Mb   65.7% 23097 clusters at 95.0%, size 11.7, id 98.2%00:22  68Mb   68.1% 23755 clusters at 95.0%, size 11.8, id 98.2%00:23  70Mb   70.7% 24437 clusters at 95.0%, size 11.9, id 98.2%00:24  71Mb   73.5% 25124 clusters at 95.0%, size 12.1, id 98.2%00:25  72Mb   75.9% 25792 clusters at 95.0%, size 12.1, id 98.2%00:26  73Mb   78.1% 26354 clusters at 95.0%, size 12.2, id 98.2%00:27  75Mb   79.8% 26808 clusters at 95.0%, size 12.3, id 98.2%00:28  76Mb   82.2% 27399 clusters at 95.0%, size 12.4, id 98.2%00:29  77Mb   84.6% 27998 clusters at 95.0%, size 12.5, id 98.2%00:30  78Mb   86.9% 28590 clusters at 95.0%, size 12.5, id 98.2%00:31  79Mb   89.2% 29188 clusters at 95.0%, size 12.6, id 98.2%00:32  80Mb   91.4% 29849 clusters at 95.0%, size 12.6, id 98.2%00:33  81Mb   93.7% 30418 clusters at 95.0%, size 12.7, id 98.2%00:34  82Mb   95.7% 31142 clusters at 95.0%, size 12.7, id 98.2%00:35  84Mb   97.2% 32083 clusters at 95.0%, size 12.5, id 98.2%00:36  86Mb   98.4% 32885 clusters at 95.0%, size 12.4, id 98.2%00:37  86Mb   99.3% 33539 clusters at 95.0%, size 12.3, id 98.2%00:38  87Mb  100.0% 34082 clusters at 95.0%, size 12.3, id 98.2%00:38  70Mb  100.0% 34106 clusters at 95.0%, size 12.2, id 98.2%
+INFO: Processing 092314_REV-PrepX_ES1309_CGATG_L001_R1_001
+INFO: Number of unique sequences found: 34106
+INFO: Done
+Total number of sequences: 34,106
+% of sequences with LTR: 3.40% (1,159)
+% of sequences with LTR (>=25bp): 3.40% (1,159)
+% of sequences with LTR (<25bp): 0.00% (0)
+% of sequences with LTR but with out LINKER: 3.40% (1,159)
+% of sequences with LTR and LINKER: 0.00% (0)
+% of sequences with LTR and LINKER (>=25bp): 0.00% (0)
+% of sequences with LTR and LINKER (<25bp): 0.00% (0)
+Time loading forward index: 00:01:06
+Time loading mirror index: 00:01:01
+Seeded quality full-index search: 00:00:00
+# reads processed: 1159
+# reads with at least one reported alignment: 617 (53.24%)
+# reads that failed to align: 520 (44.87%)
+# reads with alignments suppressed due to -m: 22 (1.90%)
+Reported 617 alignments to 1 output stream(s)
+Time searching: 00:02:07
+Overall time: 00:02:07

@@ -1,0 +1,19 @@
+ChipSeq notes:
+--------------
+
+hostname: rcapps
+
+Contact Cheng Liu to get credentials on rcapps.
+
+Chilin2.py
+
+config file - software paths
+
+Chilin2 simple -t fastq (no gzip support) -c controlfile (optional) -s species (human, mouse, monkey) (hg18, mm9, mm10)
+
+aligns (bam)
+downstream analysis (list of peaks, wiggle file)
+
+NOTE: This pipeline cleans up the fastq file (input) after the run. Uses BWA-MEM aligner.
+
+
