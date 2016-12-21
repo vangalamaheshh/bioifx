@@ -12,9 +12,11 @@ __doc__    = """
 """
 
 import os
+import sys
 import pandas as pd
 import snakemake
 
+configfile: "config.yaml"
 df = pd.read_csv("metasheet.csv", sep = ",", header = 0, \
         index_col = 0, comment = '#')
 
@@ -24,15 +26,23 @@ def getFastqFiles(wildcards):
     return ["data/" + leftMate, "data/" + rightMate ] if os.path.isfile("data/" + rightMate) \
         else ["data/" + leftMate]
 
+def getIntervalFile(wildcards):
+    intervalFile = config["params"]["mutect2"]["intervalFile"]
+    return "-L " + intervalFile if intervalFile else ""
+
 rule target:
     input:
-        expand("analysis/bwa_mem/{sample}/{sample}.sam", sample = df.index)
+        expand("analysis/mutect2/{sample}/{sample}.mutect2.vcf", sample = df.index),
+        expand("analysis/report/alignment/{sample}/{sample}.samtools.stats.txt", \
+                sample = df.index),
+        expand("analysis/report/alignment/{sample}/{sample}.picard.wgs_metrics.txt", \
+                sample = df.index)
 
 rule runBwa:
     input:
         getFastqFiles
     output:
-        "analysis/bwa_mem/{sample}/{sample}.sam"
+        protected("analysis/bwa_mem/{sample}/{sample}.sam")
     threads: 8
     message:
         "Running Bwa on {wildcards.sample}"
@@ -50,7 +60,7 @@ rule samToBam:
     input:
         "analysis/bwa_mem/{sample}/{sample}.sam"
     output:
-        "analysis/bwa_mem/{sample}/{sample}.bam"
+        protected("analysis/bwa_mem/{sample}/{sample}.bam")
     message:
         "Sam to bam coversion"
     shell:
@@ -61,19 +71,69 @@ rule sortBam:
     input:
         unsortedBam = "analysis/bwa_mem/{sample}/{sample}.bam"
     output:
-        sortedBam = "analysis/bwa_mem/{sample}/{sample}.sorted.bam",
-        bam_index = "analysis/bwa_mem/{sample}/{sample}.sorted.bam.bai"
+        sortedBam = protected("analysis/bwa_mem/{sample}/{sample}.sorted.bam"),
+        bam_index = protected("analysis/bwa_mem/{sample}/{sample}.sorted.bam.bai")
     message:
         "Sorting and indexing bam"
     shell:
         "samtools sort -f {input.unsortedBam} {output.sortedBam} "
         "&& samtools index {output.sortedBam}"
 
+rule samtoolsStats:
+    input:
+        unsortedBam = "analysis/bwa_mem/{sample}/{sample}.bam"
+    output:
+        samStats = protected("analysis/report/alignment/{sample}/{sample}.samtools.stats.txt")
+    message:
+        "Running samtools stats on {wildcards.sample}"
+    shell:
+        "samtools stats {input.unsortedBam} | grep ^SN | "
+        "gawk 'BEGIN {{ FS=\"\t\"; }} {{ print $2,$3; }}' 1>{output.samStats}"
+
+rule picardStats:
+    input:
+        sortedBam = "analysis/bwa_mem/{sample}/{sample}.sorted.bam"
+    output:
+        picardStats = protected("analysis/report/alignment/{sample}/" + \
+                        "{sample}.picard.wgs_metrics.txt")
+    message:
+        "Running picard wgs stats on {wildcards.sample}"
+    params:
+        refFasta = "/ifs/rcgroups/ccgd/ccgd-data/home/umv/ref_files/" \
+                    + "human/ucsc/hg19/Sequence/WholeGenomeFasta/genome.fa"
+    shell:
+        "picard CollectWgsMetrics I={input.sortedBam} O={output.picardStats} "
+        "R={params.refFasta}" 
+
+rule mapReportMatrix:
+    input:
+        metricsList = expand("analysis/report/alignment/{sample}/" + \
+                "{sample}.samtools.stats.txt", sample = df.index)
+    output:
+        csv = "analysis/report/alignment/align_report.csv"
+    message:
+        "Gather samtools stats into csv"
+    run:
+        argList = " -s " + " -s ".join(input.metricsList)
+        shell("perl /ifs/rcgroups/ccgd/ccgd-data/home/umv/git/bioifx/utilities/alignment"
+        + "/sam_stats_matrix.pl " + argList + " 1>{output.csv}") 
+        
+rule mapReportPlot:
+    input:
+        csv = "analysis/report/alignment/align_report.csv"
+    output:
+        png = "analysis/report/alignment/align_report.png"
+    message:
+        "Plotting alignment PNG"
+    shell:
+        "Rscript /ifs/rcgroups/ccgd/ccgd-data/home/umv/git/bioifx/utilities/"
+        "alignment/sam_stats_matrix.R {input.csv} {output.png}"
+
 rule runMuTect2:
     input:
         "analysis/bwa_mem/{sample}/{sample}.sorted.bam"
     output:
-        "analysis/mutect2/{sample}/{sample}.mutect2.vcf"
+        protected("analysis/mutect2/{sample}/{sample}.mutect2.vcf")
     message:
         "Running MuTect2 on {wildcards.sample}"
     threads: 8
@@ -82,9 +142,10 @@ rule runMuTect2:
         refFasta = "/ifs/rcgroups/ccgd/ccgd-data/home/umv/ref_files/" \
                     + "human/ucsc/hg19/Sequence/WholeGenomeFasta/genome.fa",
         dbSnp = "/ifs/rcgroups/ccgd/ccgd-data/home/umv/software/" \
-                    + "muTect-1.1.4/lib/dbsnp_138.hg19.vcf"
+                    + "muTect-1.1.4/lib/dbsnp_138.hg19.vcf",
+        intervalFile = getIntervalFile
     shell:
         "java -jar {params.gatkexec} -T MuTect2 -nct {threads} -R {params.refFasta} "
-        "-I:tumor {input} --dbsnp {params.dbSnp} -o {output}"
+        "-I:tumor {input} --dbsnp {params.dbSnp} {params.intervalFile} -o {output}"
 
  
