@@ -32,11 +32,10 @@ def getIntervalFile(wildcards):
 
 rule target:
     input:
-        expand("analysis/mutect2/{sample}/{sample}.mutect2.vcf", sample = df.index),
-        expand("analysis/report/alignment/{sample}/{sample}.samtools.stats.txt", \
-                sample = df.index),
         expand("analysis/report/alignment/{sample}/{sample}.picard.wgs_metrics.txt", \
-                sample = df.index)
+                sample = df.index),
+        "analysis/mutect2/" + config["project_name"] + ".merged.mutect2.vcf",
+        "analysis/report/alignment/align_report.png"
 
 rule runBwa:
     input:
@@ -162,4 +161,46 @@ rule mergeVCFs:
             "-T CombineVariants -R /ifs/rcgroups/ccgd/ccgd-data/home/umv/ref_files/human/ucsc/" +
             "hg19/Sequence/WholeGenomeFasta/genome.fa " + vcfs + " -o " +
             output.mergedVcf + " -genotypeMergeOptions UNIQUIFY -nt 4")
- 
+
+rule TiTvRatio:
+    input:
+        csv = "analysis/report/TiTv/{sample}/csv/{sample}.ti_tv_ratio.csv"
+    output:
+        png = "analysis/report/TiTv/{sample}/png/{sample}.ti_tv_ratio.png"
+    message:
+        "Plotting Transitions to Transversions Ratio"
+    shell:
+        "Rscript /ifs/rcgroups/ccgd/ccgd-data/home/umv/git/bioifx/utilities/SNP/ti_tv_ratio.R "
+        "{input.csv} {output.png}"
+
+rule generateReport:
+    output:
+        html = "analysis/report/" + config["project_name"] + ".html"
+    message:
+        "Generating HTML Report"
+    run:
+        report = """
+=====================
+PCR Amplicon Project
+=====================
+
+Workflow:
+=========
+Alignment:
+==========
+    Raw reads are mapped to human reference genome (UCSC build - hg19) using *BWA mem* aligner. The alignment statistics are generated using *samtools stats* and *picard wgs_metrics*. The alignment stats are given in the report below. 
+""" 
+
+        report += "\n\t.. image:: " + snakemake.report.data_uri("analysis/report/" +
+                "alignment/align_report.png") + "\n" 
+
+
+        report += """
+SNP calling:
+============
+    Aligned bam files are processing using MuTect2 software (now part of GATK). The resultant vcf files are merged into one vcf file for archival purposes. For further analysis, SNPs are filtered using *PASS* criterion for each sample. Transitions to Transversions ratio is generated for every 100,000bp window for *chr7, chr17 and chrX*. 
+"""
+
+        snakemake.utils.report(report, output.html, 
+            metadata = "Center for Cancer Genome Discovery",
+            **{'Copyrights': "CCGD"})
