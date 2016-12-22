@@ -148,4 +148,18 @@ rule runMuTect2:
         "java -jar {params.gatkexec} -T MuTect2 -nct {threads} -R {params.refFasta} "
         "-I:tumor {input} --dbsnp {params.dbSnp} {params.intervalFile} -o {output}"
 
+rule mergeVCFs:
+    input:
+        vcfList = expand("analysis/mutect2/{sample}/{sample}.mutect2.vcf", sample = df.index)
+    output:
+        mergedVcf = "analysis/mutect2/" + config["project_name"] + ".merged.mutect2.vcf"
+    message:
+        "Merging vcfs into one"
+    threads: 4
+    run:
+        vcfs = " --variant " + " --variant ".join(input.vcfList)
+        shell("java -jar /ifs/rcgroups/ccgd/ccgd-data/home/umv/software/GenomeAnalysisTK.jar " +
+            "-T CombineVariants -R /ifs/rcgroups/ccgd/ccgd-data/home/umv/ref_files/human/ucsc/" +
+            "hg19/Sequence/WholeGenomeFasta/genome.fa " + vcfs + " -o " +
+            output.mergedVcf + " -genotypeMergeOptions UNIQUIFY -nt 4")
  
