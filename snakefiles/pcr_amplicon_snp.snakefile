@@ -15,6 +15,8 @@ import os
 import sys
 import pandas as pd
 import snakemake
+from snakemake.report import data_uri as dataURI
+from snakemake.utils import report as HTMLReport
 
 configfile: "config.yaml"
 df = pd.read_csv("metasheet.csv", sep = ",", header = 0, \
@@ -191,7 +193,7 @@ Alignment:
     Raw reads are mapped to human reference genome (UCSC build - hg19) using *BWA mem* aligner. The alignment statistics are generated using *samtools stats* and *picard wgs_metrics*. The alignment stats are given in the report below. 
 """ 
 
-        report += "\n\t.. image:: " + snakemake.report.data_uri("analysis/report/" +
+        report += "\n\t.. image:: " + dataURI("analysis/report/" +
                 "alignment/align_report.png") + "\n" 
 
 
@@ -200,7 +202,8 @@ SNP calling:
 ============
     Aligned bam files are processing using MuTect2 software (now part of GATK). The resultant vcf files are merged into one vcf file for archival purposes. For further analysis, SNPs are filtered using *PASS* criterion for each sample. Transitions to Transversions ratio is generated for every 100,000bp window for *chr7, chr17 and chrX*. 
 """
+        report += "\n\t.. image:: " + dataURI("analysis/report/ti_tv_ratio.png") + "\n"
 
-        snakemake.utils.report(report, output.html, 
+        HTMLReport(report, output.html, 
             metadata = "Center for Cancer Genome Discovery",
-            **{'Copyrights': "CCGD"})
+            **{'Copyrights': "/ifs/rcgroups/ccgd/ccgd-data/home/umv/misc/ccgd.jpg"})
