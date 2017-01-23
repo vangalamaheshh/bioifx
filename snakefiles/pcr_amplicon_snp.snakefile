@@ -193,9 +193,26 @@ rule TiTvRatio:
         "Rscript /ifs/rcgroups/ccgd/ccgd-data/home/umv/git/bioifx/utilities/SNP/ti_tv_ratio.R "
         "{input.csv} {output.png}"
 
+
+rule snpAnnotation:
+    input:
+        vcf = "analysis/mutect2/{sample}/{sample}.mutect2.vcf"
+    output:
+        vcfAnnot = protected("analysis/snpEff/{sample}/{sample}.snpEff_annot.vcf"),
+        vcfStats = protected("analysis/snpEff/{sample}/{sample}.snpEff_summary.html")
+    params:
+        snpEffConf = config["params"]["snpEff"]["snpEff_config"],
+        snpEffDb = config["params"]["snpEff"]["snpEff_db"]
+    message: "Running snpEff annotation analysis for {wildcards.sample}"
+    shell:
+        "snpEff -Xmx2G -stats {output.vcfStats} -c {params.snpEffConf} "
+        "{params.snpEffDb} {input.vcf} > {output.vcfAnnot}"
+
+
 rule generateReport:
     input:
-        "analysis/report/mutect2/vcf_summary_report.csv"
+        "analysis/report/mutect2/vcf_summary_report.csv",
+        expand("analysis/snpEff/{sample}/{sample}.snpEff_annot.vcf", sample = df.index)
     output:
         html = "analysis/report/" + config["project_name"] + ".html"
     message:
