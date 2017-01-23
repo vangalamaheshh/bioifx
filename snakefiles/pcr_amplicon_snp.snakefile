@@ -17,6 +17,7 @@ import pandas as pd
 import snakemake
 from snakemake.report import data_uri as dataURI
 from snakemake.utils import report as HTMLReport
+from bioifx.utilities.SNP.csv_to_sphinx_table import get_sphinx_table
 
 configfile: "config.yaml"
 df = pd.read_csv("metasheet.csv", sep = ",", header = 0, \
@@ -144,10 +145,13 @@ rule runMuTect2:
                     + "human/ucsc/hg19/Sequence/WholeGenomeFasta/genome.fa",
         dbSnp = "/ifs/rcgroups/ccgd/ccgd-data/home/umv/software/" \
                     + "muTect-1.1.4/lib/dbsnp_138.hg19.vcf",
+        cosmicVcf = "/ifs/rcgroups/ccgd/ccgd-data/home/umv/software/" \
+                    + "muTect-1.1.4/lib/CosmicMutantExport.v79.hg19.tsv",
         intervalFile = getIntervalFile
     shell:
         "java -jar {params.gatkexec} -T MuTect2 -nct {threads} -R {params.refFasta} "
-        "-I:tumor {input} --dbsnp {params.dbSnp} {params.intervalFile} -o {output}"
+        "-I:tumor {input} --dbsnp {params.dbSnp} --cosmic {params.cosmicVcf} "
+        "{params.intervalFile} -o {output}"
 
 rule mergeVCFs:
     input:
@@ -164,6 +168,20 @@ rule mergeVCFs:
             "hg19/Sequence/WholeGenomeFasta/genome.fa " + vcfs + " -o " +
             output.mergedVcf + " -genotypeMergeOptions UNIQUIFY -nt 4")
 
+rule vcfReport:
+    input:
+        vcfList = expand("analysis/mutect2/{sample}/{sample}.mutect2.vcf", sample = df.index)
+    output:
+        vcfReport = "analysis/report/mutect2/vcf_report.csv",
+        vcfSummaryReport = "analysis/report/mutect2/vcf_summary_report.csv"
+    message:
+        "Gathering VCF into a summary report"
+    run:
+        vcfFiles = " -v " + " -v ".join(input.vcfList)
+        shell("perl /ifs/rcgroups/ccgd/ccgd-data/home/umv/git/bioifx/utilities/SNP/snp_matrix.pl " +
+            vcfFiles + " -r " + output.vcfReport + " -s " + output.vcfSummaryReport)
+        
+
 rule TiTvRatio:
     input:
         csv = "analysis/report/TiTv/{sample}/csv/{sample}.ti_tv_ratio.csv"
@@ -176,22 +194,24 @@ rule TiTvRatio:
         "{input.csv} {output.png}"
 
 rule generateReport:
+    input:
+        "analysis/report/mutect2/vcf_summary_report.csv"
     output:
         html = "analysis/report/" + config["project_name"] + ".html"
     message:
         "Generating HTML Report"
     run:
         report = """
-=====================
-PCR Amplicon Project
-=====================
+===============================================================
+PCR Amplicon Project - {0}
+===============================================================
 
 Workflow:
 =========
 Alignment:
 ==========
     Raw reads are mapped to human reference genome (UCSC build - hg19) using *BWA mem* aligner. The alignment statistics are generated using *samtools stats* and *picard wgs_metrics*. The alignment stats are given in the report below. 
-""" 
+""".format(config["project_name"]) 
 
         report += "\n\t.. image:: " + dataURI("analysis/report/" +
                 "alignment/align_report.png") + "\n" 
@@ -200,10 +220,12 @@ Alignment:
         report += """
 SNP calling:
 ============
-    Aligned bam files are processing using MuTect2 software (now part of GATK). The resultant vcf files are merged into one vcf file for archival purposes. For further analysis, SNPs are filtered using *PASS* criterion for each sample. Transitions to Transversions ratio is generated for every 100,000bp window for *chr7, chr17 and chrX*. 
+    Aligned bam files are processing using MuTect2 software (now part of GATK). The resultant vcf files are merged into one vcf file for archival purposes. For further analysis, SNPs are filtered using *PASS* criterion for each sample. 
 """
-        report += "\n\t.. image:: " + dataURI("analysis/report/ti_tv_ratio.png") + "\n"
-
+        report += """\n\nFollowing table describes the counts of SNPs across the chromosomes for all samples provided.
+"""
+        report += "\n" + get_sphinx_table("analysis/report/mutect2/vcf_summary_report.csv") + "\n"
+        
         HTMLReport(report, output.html, 
             metadata = "Center for Cancer Genome Discovery",
             **{'Copyrights': "/ifs/rcgroups/ccgd/ccgd-data/home/umv/misc/ccgd.jpg"})
