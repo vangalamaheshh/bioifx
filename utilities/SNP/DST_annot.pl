@@ -29,10 +29,10 @@ sub process_data {
   my $header = <FH>;
   while(my $line = <FH>) {
     chomp $line;
-    my($num) = ($line =~ /^(\d+)/);
+    my($num, $cancer_type) = ($line =~ /^(\d+),(.+?),/);
     my($cosm) = ($line =~ /(COSM\d+)/);
     my($rs) = ($line =~ /(rs\d+)/);
-    my $info = [$num];
+    my $info = [$num, $cancer_type];
     if($cosm or $rs) {
       if($cosm and exists $$db{$cosm}) {
         push @$info, $$db{$cosm};
