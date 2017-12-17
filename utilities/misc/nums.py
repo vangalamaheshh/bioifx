@@ -2,18 +2,15 @@
 
 #vim: syntax=python tabstop=2 expandtab
 
-from random import random
+from random import randint
 import sys
 import math
-
-def generateNum(numRange):
-  return math.ceil(random() * numRange)
 
 def generateNums(num, numRange):
   numList = list()
   count = 0
   while count < num:
-    randNum = generateNum(numRange)
+    randNum = randint(1, numRange)
     if randNum not in numList:
       count = count + 1
       numList.append(randNum)
