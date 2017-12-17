@@ -4,15 +4,16 @@
 
 from random import random
 import sys
+import math
 
 def generateNum(numRange):
-  return int(random() * numRange)
+  return math.ceil(random() * numRange)
 
 def generateNums(num, numRange):
   numList = list()
   count = 0
   while count < num:
-    randNum = generateNum(numRange + 1)
+    randNum = generateNum(numRange)
     if randNum not in numList:
       count = count + 1
       numList.append(randNum)
