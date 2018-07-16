@@ -3,9 +3,10 @@
 import sys
 import re
 from collections import OrderedDict
+from ruamel.yaml import YAML
 
 def get_icd9_info(stroke_file):
-  data = open(stroke_file, 'r').read()
+  data = open(stroke_file, 'r', encoding = 'utf-8').read()
   data = data.split('\n')
   d = OrderedDict()
   trigger_on = False
@@ -23,7 +24,7 @@ def get_icd9_info(stroke_file):
   return d
 
 def get_icd10_info(stroke_file):
-  data = open(stroke_file, 'r').read()
+  data = open(stroke_file, 'r', encoding = 'utf-8').read()
   data = data.split('\n')
   d = OrderedDict()
   trigger_on = False
@@ -52,9 +53,35 @@ def get_icd10_info(stroke_file):
             raise "Error in regexp logic for ICD10 code fetch."
   return d
 
+def print_yaml_with_comments(info):
+	yaml = YAML()
+	input = """
+icd9:
+  -
+icd10:
+  -
+"""
+	data = yaml.load(input)
+	for icd_type in ['icd9', 'icd10']:
+		start = True
+		index = 0
+		for key, val in info[icd_type].items():
+			key = key.replace(' ', '')
+			key = key.replace('-', ' - ')
+			if start:
+				start = False
+				data[icd_type][0] = key
+			else:
+				data[icd_type].append(key)
+			data[icd_type].yaml_add_eol_comment(val, index)
+			index += 1
+	yaml.dump(data, sys.stdout)
+			
+		
+  
 if __name__ == '__main__':
   stroke_file = sys.argv[1]
   icd9_info = get_icd9_info(stroke_file)
   icd10_info = get_icd10_info(stroke_file)
-  for key, val in icd10_info.items():
-    print(key, "\t", val)
+  print_yaml_with_comments(OrderedDict({"icd9": icd9_info, "icd10": icd10_info}))
+  
