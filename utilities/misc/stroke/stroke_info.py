@@ -36,7 +36,7 @@ def get_icd10_info(stroke_file):
       trigger_on = False
       break
     if trigger_on:
-      if line[0] == '#':
+      if line and line[0] == '#':
         continue
       match_obj = re.search(r'([IGO]\d+.{0,1}\d{0,}\s{0,}\-{0,1}\s{0,}[IGO]{0,1}\d{0,}.{0,1}\d{0,})\s+(.+)\s+(I\d+)\s+(.+)', line)
       if match_obj:
