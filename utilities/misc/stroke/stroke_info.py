@@ -56,10 +56,11 @@ def get_icd10_info(stroke_file):
 def print_yaml_with_comments(info):
 	yaml = YAML()
 	input = """
-icd9:
-  -
-icd10:
-  -
+inclusion:
+  icd9:
+    -
+  icd10:
+    -
 """
 	data = yaml.load(input)
 	for icd_type in ['icd9', 'icd10']:
@@ -70,10 +71,10 @@ icd10:
 			key = key.replace('-', ' - ')
 			if start:
 				start = False
-				data[icd_type][0] = key
+				data['inclusion'][icd_type][0] = key
 			else:
-				data[icd_type].append(key)
-			data[icd_type].yaml_add_eol_comment(val, index)
+				data['inclusion'][icd_type].append(key)
+			data['inclusion'][icd_type].yaml_add_eol_comment(val, index)
 			index += 1
 	yaml.dump(data, sys.stdout)
 			
