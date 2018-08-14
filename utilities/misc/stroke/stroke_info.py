@@ -59,13 +59,13 @@ def print_yaml_with_comments(info):
 	yaml = YAML()
 	input = """
 inclusion:
-  icd9:
+  icd9s:
     -
-  icd10:
+  icd10s:
     -
 """
 	data = yaml.load(input)
-	for icd_type in ['icd9', 'icd10']:
+	for icd_type in ['icd9s', 'icd10s']:
 		start = True
 		index = 0
 		for key, val in info[icd_type].items():
@@ -86,5 +86,5 @@ if __name__ == '__main__':
   stroke_file = sys.argv[1]
   icd9_info = get_icd9_info(stroke_file)
   icd10_info = get_icd10_info(stroke_file)
-  print_yaml_with_comments(OrderedDict({"icd9": icd9_info, "icd10": icd10_info}))
+  print_yaml_with_comments(OrderedDict({"icd9s": icd9_info, "icd10s": icd10_info}))
   
