@@ -1,0 +1,307 @@
+inclusion:
+  icd9s:
+  - '430'  # SUBARACHNOID HEMORRHAGE
+  - '431' # INTRACEREBRAL HEMORRHAGE
+  - '433.01' # OCL BSLR ART W INFRCT
+  - '433.11' # OCL CRTD ART W INFRCT
+  - '433.21' # OCL VRTB ART W INFRCT
+  - '433.31' # OCL MLT BI ART W INFRCT
+  - '433.81' # OCL SPCF ART W INFRCT
+  - '433.91' # OCL ART NOS W INFRCT
+  - '434.01' # THROMBOSIS WITH CEREBRAL INFARCTION
+  - '434.11' # CEREBRAL EMBOLISM WITH INFARCTION
+  - '434.91' # CRBL ART OCL NOS W INFRC
+  - '435.0' # BASILAR ARTERY SYNDROME
+  - '435.1' # VERTEBRAL ARTERY SYNDROME
+  - '435.2' # SUBCLAVIAN STEAL SYNDROME
+  - '435.3' # VERTEBROBASILAR ARTERY SYNDROME
+  - '435.8' # TRANS CEREB ISCHEMIA NEC
+  - '435.9' # TRANS CEREB ISCHEMIA NOS
+  - '436' # ACUTE, BUT ILL-DEFINED, CEREBROVASCULAR DISEASE
+  - '674.00' # CEREBROVASCULAR DISORDERS OCCURRING IN PREGNANCY CHILDBIRTH OR THE PUERPERIUM UNSPECIFIED AS TO EPISODE OF CARE
+  - '674.01' # CEREBROVASCULAR DISORDERS WITH DELIVERY WITH OR WITHOUT ANTEPARTUM CONDITION
+  - '674.02' # CEREBROVASCULAR DISORDERS WITH DELIVERY WITH POSTPARTUM COMPLICATION
+  - '674.03' # ANTEPARTUM CEREBROVASCULAR DISORDERS
+  - '674.04' # POSTPARTUM CEREBROVASCULAR DISORDERS
+  - '997.02' # IATROGEN CV INFARC/HMRHG
+  icd10s:
+  - I60.00  # Nontraumatic subarachnoid hemorrhage from unspecified carotid siphon and bifurcation
+  - I60.01 # Nontraumatic subarachnoid hemorrhage from right carotid siphon and bifurcation
+  - I60.02 # Nontraumatic subarachnoid hemorrhage from left carotid siphon and bifurcation
+  - I60.1 # Nontraumatic subarachnoid hemorrhage from middle cerebral artery
+  - I60.10 # Nontraumatic subarachnoid hemorrhage from unspecified middle cerebral artery
+  - I60.11 # Nontraumatic subarachnoid hemorrhage from right middle cerebral artery
+  - I60.12 # Nontraumatic subarachnoid hemorrhage from left middle cerebral artery
+  - I60.2 # Nontraumatic subarachnoid hemorrhage from anterior communicating artery
+  - I60.3 # Nontraumatic subarachnoid hemorrhage from posterior communicating artery
+  - I60.30 # Nontraumatic subarachnoid hemorrhage from unspecified posterior communicating artery
+  - I60.31 # Nontraumatic subarachnoid hemorrhage from right posterior communicating artery
+  - I60.32 # Nontraumatic subarachnoid hemorrhage from left posterior communicating artery
+  - I60.4 # Nontraumatic subarachnoid hemorrhage from basilar artery
+  - I60.5 # Nontraumatic subarachnoid hemorrhage from vertebral artery
+  - I60.50 # Nontraumatic subarachnoid hemorrhage from unspecified vertebral artery
+  - I60.51 # Nontraumatic subarachnoid hemorrhage from right vertebral artery
+  - I60.52 # Nontraumatic subarachnoid hemorrhage from left vertebral artery
+  - I60.6 # Nontraumatic subarachnoid hemorrhage from other intracranial arteries
+  - I60.7 # Nontraumatic subarachnoid hemorrhage from unspecified intracranial artery
+  - I60.8 # Other nontraumatic subarachnoid hemorrhage
+  - I60.9 # Nontraumatic subarachnoid hemorrhage, unspecified
+  - I61.0 # Nontraumatic intracerebral hemorrhage in hemisphere, subcortical
+  - I61.1 # Nontraumatic intracerebral hemorrhage in hemisphere, cortical
+  - I61.2 # Nontraumatic intracerebral hemorrhage in hemisphere, unspecified
+  - I61.3 # Nontraumatic intracerebral hemorrhage in brain stem
+  - I61.4 # Nontraumatic intracerebral hemorrhage in cerebellum
+  - I61.5 # Nontraumatic intracerebral hemorrhage, intraventricular
+  - I61.6 # Nontraumatic intracerebral hemorrhage, multiple localized
+  - I61.8 # Other nontraumatic intracerebral hemorrhage
+  - I61.9 # Nontraumatic intracerebral hemorrhage, unspecified
+  - I63.00 # Cerebral infarction due to thrombosis of unspecified precerebral artery
+  - I63.01 # Cerebral infarction due to thrombosis of vertebral artery
+  - I63.011 # Cerebral infarction due to thrombosis of right vertebral artery
+  - I63.012 # Cerebral infarction due to thrombosis of left vertebral artery
+  - I63.013 # Cerebral infarction due to thrombosis of bilateral vertebral arteries
+  - I63.019 # Cerebral infarction due to thrombosis of unspecified vertebral artery
+  - I63.02 # Cerebral infarction due to thrombosis of basilar artery
+  - I63.03 # Cerebral infarction due to thrombosis of carotid artery
+  - I63.031 # Cerebral infarction due to thrombosis of right carotid artery
+  - I63.032 # Cerebral infarction due to thrombosis of left carotid artery
+  - I63.033 # Cerebral infarction due to thrombosis of bilateral carotid arteries
+  - I63.039 # Cerebral infarction due to thrombosis of unspecified carotid artery
+  - I63.09 # Cerebral infarction due to thrombosis of other precerebral artery
+  - I63.1 # Cerebral infarction due to embolism of precerebral arteries
+  - I63.10 # Cerebral infarction due to embolism of unspecified precerebral artery
+  - I63.11 # Cerebral infarction due to embolism of vertebral artery
+  - I63.111 # Cerebral infarction due to embolism of right vertebral artery
+  - I63.112 # Cerebral infarction due to embolism of left vertebral artery
+  - I63.113 # Cerebral infarction due to embolism of bilateral vertebral arteries
+  - I63.119 # Cerebral infarction due to embolism of unspecified vertebral artery
+  - I63.12 # Cerebral infarction due to embolism of basilar artery
+  - I63.13 # Cerebral infarction due to embolism of carotid artery
+  - I63.131 # Cerebral infarction due to embolism of right carotid artery
+  - I63.132 # Cerebral infarction due to embolism of left carotid artery
+  - I63.133 # Cerebral infarction due to embolism of bilateral carotid arteries
+  - I63.139 # Cerebral infarction due to embolism of unspecified carotid artery
+  - I63.19 # Cerebral infarction due to embolism of other precerebral artery
+  - I63.2 # Cerebral infarction due to unspecified occlusion or stenosis of precerebral arteries
+  - I63.20 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified precerebral arteries
+  - I63.21 # Cerebral infarction due to unspecified occlusion or stenosis of vertebral arteries
+  - I63.211 # Cerebral infarction due to unspecified occlusion or stenosis of right vertebral artery
+  - I63.212 # Cerebral infarction due to unspecified occlusion or stenosis of left vertebral artery
+  - I63.213 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral vertebral arteries
+  - I63.219 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified vertebral arteries
+  - I63.22 # Cerebral infarction due to unspecified occlusion or stenosis of basilar artery
+  - I63.23 # Cerebral infarction due to unspecified occlusion or stenosis of carotid arteries
+  - I63.231 # Cerebral infarction due to unspecified occlusion or stenosis of right carotid arteries
+  - I63.232 # Cerebral infarction due to unspecified occlusion or stenosis of left carotid arteries
+  - I63.233 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral carotid arteries
+  - I63.239 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified carotid arteries
+  - I63.29 # Cerebral infarction due to unspecified occlusion or stenosis of other precerebral arteries
+  - I63.3 # Cerebral infarction due to thrombosis of cerebral arteries
+  - I63.30 # Cerebral infarction due to thrombosis of unspecified cerebral artery
+  - I63.31 # Cerebral infarction due to thrombosis of middle cerebral artery
+  - I63.311 # Cerebral infarction due to thrombosis of right middle cerebral artery
+  - I63.312 # Cerebral infarction due to thrombosis of left middle cerebral artery
+  - I63.313 # Cerebral infarction due to thrombosis of bilateral middle cerebral arteries
+  - I63.319 # Cerebral infarction due to thrombosis of unspecified middle cerebral artery
+  - I63.32 # Cerebral infarction due to thrombosis of anterior cerebral artery
+  - I63.321 # Cerebral infarction due to thrombosis of right anterior cerebral artery
+  - I63.322 # Cerebral infarction due to thrombosis of left anterior cerebral artery
+  - I63.323 # Cerebral infarction due to thrombosis of bilateral anterior cerebral arteries
+  - I63.329 # Cerebral infarction due to thrombosis of unspecified anterior cerebral artery
+  - I63.33 # Cerebral infarction due to thrombosis of posterior cerebral artery
+  - I63.331 # Cerebral infarction due to thrombosis of right posterior cerebral artery
+  - I63.332 # Cerebral infarction due to thrombosis of left posterior cerebral artery
+  - I63.333 # Cerebral infarction to thrombosis of bilateral posterior cerebral arteries
+  - I63.339 # Cerebral infarction due to thrombosis of unspecified posterior cerebral artery
+  - I63.34 # Cerebral infarction due to thrombosis of cerebellar artery
+  - I63.341 # Cerebral infarction due to thrombosis of right cerebellar artery
+  - I63.342 # Cerebral infarction due to thrombosis of left cerebellar artery
+  - I63.343 # Cerebral infarction to thrombosis of bilateral cerebellar arteries
+  - I63.349 # Cerebral infarction due to thrombosis of unspecified cerebellar artery
+  - I63.39 # Cerebral infarction due to thrombosis of other cerebral artery
+  - I63.4 # Cerebral infarction due to embolism of cerebral arteries
+  - I63.40 # Cerebral infarction due to embolism of unspecified cerebral artery
+  - I63.41 # Cerebral infarction due to embolism of middle cerebral artery
+  - I63.411 # Cerebral infarction due to embolism of right middle cerebral artery
+  - I63.412 # Cerebral infarction due to embolism of left middle cerebral artery
+  - I63.413 # Cerebral infarction due to embolism of bilateral middle cerebral arteries
+  - I63.419 # Cerebral infarction due to embolism of unspecified middle cerebral artery
+  - I63.42 # Cerebral infarction due to embolism of anterior cerebral artery
+  - I63.421 # Cerebral infarction due to embolism of right anterior cerebral artery
+  - I63.422 # Cerebral infarction due to embolism of left anterior cerebral artery
+  - I63.423 # Cerebral infarction due to embolism of bilateral anterior cerebral arteries
+  - I63.429 # Cerebral infarction due to embolism of unspecified anterior cerebral artery
+  - I63.43 # Cerebral infarction due to embolism of posterior cerebral artery
+  - I63.431 # Cerebral infarction due to embolism of right posterior cerebral artery
+  - I63.432 # Cerebral infarction due to embolism of left posterior cerebral artery
+  - I63.433 # Cerebral infarction due to embolism of bilateral posterior cerebral arteries
+  - I63.439 # Cerebral infarction due to embolism of unspecified posterior cerebral artery
+  - I63.44 # Cerebral infarction due to embolism of cerebellar artery
+  - I63.441 # Cerebral infarction due to embolism of right cerebellar artery
+  - I63.442 # Cerebral infarction due to embolism of left cerebellar artery
+  - I63.443 # Cerebral infarction due to embolism of bilateral cerebellar arteries
+  - I63.449 # Cerebral infarction due to embolism of unspecified cerebellar artery
+  - I63.49 # Cerebral infarction due to embolism of other cerebral artery
+  - I63.5 # Cerebral infarction due to unspecified occlusion or stenosis of cerebral arteries
+  - I63.50 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebral artery
+  - I63.51 # Cerebral infarction due to unspecified occlusion or stenosis of middle cerebral artery
+  - I63.511 # Cerebral infarction due to unspecified occlusion or stenosis of right middle cerebral artery
+  - I63.512 # Cerebral infarction due to unspecified occlusion or stenosis of left middle cerebral artery
+  - I63.513 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral middle cerebral arteries
+  - I63.519 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified middle cerebral artery
+  - I63.52 # Cerebral infarction due to unspecified occlusion or stenosis of anterior cerebral artery
+  - I63.521 # Cerebral infarction due to unspecified occlusion or stenosis of right anterior cerebral artery
+  - I63.522 # Cerebral infarction due to unspecified occlusion or stenosis of left anterior cerebral artery
+  - I63.523 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral anterior cerebral arteries
+  - I63.529 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified anterior cerebral artery
+  - I63.53 # Cerebral infarction due to unspecified occlusion or stenosis of posterior cerebral artery
+  - I63.531 # Cerebral infarction due to unspecified occlusion or stenosis of right posterior cerebral artery
+  - I63.532 # Cerebral infarction due to unspecified occlusion or stenosis of left posterior cerebral artery
+  - I63.533 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral posterior cerebral arteries
+  - I63.539 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified posterior cerebral artery
+  - I63.54 # Cerebral infarction due to unspecified occlusion or stenosis of cerebellar artery
+  - I63.541 # Cerebral infarction due to unspecified occlusion or stenosis of right cerebellar artery
+  - I63.542 # Cerebral infarction due to unspecified occlusion or stenosis of left cerebellar artery
+  - I63.543 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral cerebellar arteries
+  - I63.549 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebellar artery
+  - I63.59 # Cerebral infarction due to unspecified occlusion or stenosis of other cerebral artery
+  - I63.6 # Cerebral infarction due to cerebral venous thrombosis, nonpyogenic
+  - I63.8 # Other cerebral infarction
+  - I63.9 # Cerebral infarction, unspecified
+  - G45.0 # Vertebro-basilar artery syndrome
+  - G45.1 # Carotid artery syndrome (hemispheric)
+  - G45.2 # Multiple and bilateral precerebral artery syndromes
+  - G45.8 # Other transient cerebral ischemic attacks and related syndromes
+  - G45.9 # Transient cerebral ischemic attack, unspecified
+  - O99.411 # …… first trimester
+  - O99.412 # …… second trimester
+  - O99.413 # …… third trimester
+  - O99.419 # …… unspecified trimester
+  - O99.42 # Diseases of the circulatory system complicating childbirth
+  - O99.43 # Diseases of the circulatory system complicating the puerperium
+  - G97.31 # Intraoperative hemorrhage and hematoma of a nervous system organ or structure complicating a nervous system procedure
+  - G97.32 # Intraoperative hemorrhage and hematoma of a nervous system organ or structure complicating other procedure
+  - G97.51 # Postprocedural hemorrhage of a nervous system organ or structure following a nervous system procedure
+  - G97.52 # Postprocedural hemorrhage of a nervous system organ or structure following other procedure
+  - I97.810 # …… during cardiac surgery
+  - I97.811 # …… during other surgery
+  - I97.82 # Postprocedural cerebrovascular infarction
+  - I97.820 # …… following cardiac surgery
+  - I97.821 # …… following other surgery
+  - I6300 # Cerebral infarction due to thrombosis of unspecified precerebral artery
+  - I63339 # Cerebral infarction due to thrombosis of unspecified posterior cerebral artery
+  - I63011 # Cerebral infarction due to thrombosis of right vertebral artery
+  - I63341 # Cerebral infarction due to thrombosis of right cerebellar artery
+  - I63012 # Cerebral infarction due to thrombosis of left vertebral artery 
+  - I63342 # Cerebral infarction due to thrombosis of left cerebellar artery
+  - I63013 # Cerebral infarction due to thrombosis of bilateral vertebral arteries
+  - I63343 # Cerebral infarction due to thrombosis of bilateral cerebellar arteries
+  - I63019 # Cerebral infarction due to thrombosis of unspecified vertebral artery
+  - I63349 # Cerebral infarction due to thrombosis of unspecified cerebellar artery
+  - I6302 # Cerebral infarction due to thrombosis of basilar artery
+  - I6339 # Cerebral infarction due to thrombosis of other cerebral artery
+  - I63031 # Cerebral infarction due to thrombosis of right carotid artery
+  - I6340 # Cerebral infarction due to embolism of unspecified cerebral artery
+  - I63032 # Cerebral infarction due to thrombosis of left carotid artery 
+  - I63411 # Cerebral infarction due to embolism of right middle cerebral artery
+  - I63033 # Cerebral infarction due to thrombosis of bilateral carotid arteries
+  - I63412 # Cerebral infarction due to embolism of left middle cerebral artery
+  - I63039 # Cerebral infarction due to thrombosis of unspecified carotid artery
+  - I63413 # Cerebral infarction due to embolism of bilateral middle cerebral arteries
+  - I6309 # Cerebral infarction due to thrombosis of other precerebral artery
+  - I63419 # Cerebral infarction due to embolism of unspecified middle cerebral artery
+  - I6310 # Cerebral infarction due to embolism of unspecified precerebral artery
+  - I63421 # Cerebral infarction due to embolism of right anterior cerebral artery
+  - I63111 # Cerebral infarction due to embolism of right vertebral artery
+  - I63422 # Cerebral infarction due to embolism of left anterior cerebral artery
+  - I63112 # Cerebral infarction due to embolism of left vertebral artery 
+  - I63423 # Cerebral infarction due to embolism of bilateral anterior cerebral arteries
+  - I63113 # Cerebral infarction due to embolism of bilateral vertebral arteries
+  - I63429 # Cerebral infarction due to embolism of unspecified anterior cerebral artery
+  - I63119 # Cerebral infarction due to embolism of unspecified vertebral artery
+  - I63431 # Cerebral infarction due to embolism of right posterior cerebral artery
+  - I6312 # Cerebral infarction due to embolism of basilar artery
+  - I63432 # Cerebral infarction due to embolism of left posterior cerebral artery
+  - I63131 # Cerebral infarction due to embolism of right carotid artery
+  - I63433 # Cerebral infarction due to embolism of bilateral posterior cerebral arteries
+  - I63132 # Cerebral infarction due to embolism of left carotid artery 
+  - I63439 # Cerebral infarction due to embolism of unspecified posterior cerebral artery
+  - I63133 # Cerebral infarction due to embolism of bilateral carotid arteries
+  - I63441 # Cerebral infarction due to embolism of right cerebellar artery
+  - I63139 # Cerebral infarction due to embolism of unspecified carotid artery
+  - I63442 # Cerebral infarction due to embolism of left cerebellar artery
+  - I6319 # Cerebral infarction due to embolism of other precerebral artery
+  - I63443 # Cerebral infarction due to embolism of bilateral cerebellar arteries
+  - I6320 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified precerebral arteries 
+  - I63449 # Cerebral infarction due to embolism of unspecified cerebellar artery
+  - I63211 # Cerebral infarction due to unspecified occlusion or stenosis of right vertebral arteries 
+  - I6349 # Cerebral infarction due to embolism of other cerebral artery
+  - I63212 # Cerebral infarction due to unspecified occlusion or stenosis of left vertebral arteries
+  - I6350 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebral artery
+  - I63213 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral vertebral arteries 
+  - I63511 # Cerebral infarction due to unspecified occlusion or stenosis of right middle cerebral artery
+  - I63219 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified vertebral arteries 
+  - I63512 # Cerebral infarction due to unspecified occlusion or stenosis of left middle cerebral artery
+  - I6322 # Cerebral infarction due to unspecified occlusion or stenosis of basilar arteries 
+  - I63513 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral middle arteries
+  - I63231 # Cerebral infarction due to unspecified occlusion or stenosis of right carotid arteries 
+  - I63519 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified middle cerebral artery
+  - I63232 # Cerebral infarction due to unspecified occlusion or stenosis of left carotid arteries
+  - I63521 # Cerebral infarction due to unspecified occlusion or stenosis of right anterior cerebral artery
+  - I63233 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral carotid arteries 
+  - I63522 # Cerebral infarction due to unspecified occlusion or stenosis of left anterior cerebral artery
+  - I63239 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified carotid arteries 
+  - I63523 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral anterior arteries
+  - I6329 # Cerebral infarction due to unspecified occlusion or stenosis of other precerebral arteries 
+  - I63529 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified anterior cerebral artery
+  - I6330 # Cerebral infarction due to thrombosis of unspecified cerebral artery 
+  - I63531 # Cerebral infarction due to unspecified occlusion or stenosis of right posterior cerebral artery
+  - I63311 # Cerebral infarction due to thrombosis of right middle cerebral artery
+  - I63532 # Cerebral infarction due to unspecified occlusion or stenosis of left posterior cerebral artery
+  - I63312 # Cerebral infarction due to thrombosis of left middle cerebral artery 
+  - I63533 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral posterior arteries
+  - I63313 # Cerebral infarction due to thrombosis of bilateral middle cerebral arteries
+  - I63539 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified posterior cerebral artery
+  - I63319 # Cerebral infarction due to thrombosis of unspecified middle cerebral artery
+  - I63541 # Cerebral infarction due to unspecified occlusion or stenosis of right cerebellar artery
+  - I63321 # Cerebral infarction due to thrombosis of right anterior cerebral artery
+  - I63542 # Cerebral infarction due to unspecified occlusion or stenosis of left cerebellar artery
+  - I63322 # Cerebral infarction due to thrombosis of left anterior cerebral artery 
+  - I63543 # Cerebral infarction due to unspecified occlusion or stenosis of bilateral cerebellar arteries
+  - I63323 # Cerebral infarction due to thrombosis of bilateral anterior arteries 
+  - I63549 # Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebellar artery
+  - I63329 # Cerebral infarction due to thrombosis of unspecified anterior cerebral artery
+  - I6359 # Cerebral infarction due to unspecified occlusion or stenosis of other cerebral artery
+  - I63331 # Cerebral infarction due to thrombosis of right posterior cerebral artery 
+  - I636 # Cerebral infarction due to cerebral venous thrombosis, nonpyogenic
+  - I63332 # Cerebral infarction due to thrombosis of left posterior cerebral artery
+  - I638 # Other cerebral infarction
+  - I63333 # Cerebral infarction due to thrombosis of bilateral posterior arteries
+  - I639 # Cerebral infarction, unspecified
+  - I6000 # Nontraumatic subarachnoid hemorrhage from unspecified carotid siphon and bifurcation 
+  - I606 # Nontraumatic subarachnoid hemorrhage from other intracranial arteries
+  - I6001 # Nontraumatic subarachnoid hemorrhage from right carotid siphon and bifurcation 
+  - I607 # Nontraumatic subarachnoid hemorrhage from unspecified intracranial artery
+  - I6002 # Nontraumatic subarachnoid hemorrhage from left carotid siphon and bifurcation
+  - I608 # Other nontraumatic subarachnoid hemorrhage
+  - I6010 # Nontraumatic subarachnoid hemorrhage from unspecified middle cerebral artery 
+  - I609 # Nontraumatic subarachnoid hemorrhage, unspecified
+  - I6011 # Nontraumatic subarachnoid hemorrhage from right middle cerebral artery 
+  - I610 # Nontraumatic intracerebral hemorrhage in hemisphere, subcortical
+  - I6012 # Nontraumatic subarachnoid hemorrhage from left middle cerebral artery
+  - I611 # Nontraumatic intracerebral hemorrhage in hemisphere, cortical
+  - I602 # Nontraumatic subarachnoid hemorrhage from anterior communicating artery
+  - I612 # Nontraumatic intracerebral hemorrhage in hemisphere, unspecified
+  - I6030 # Nontraumatic subarachnoid hemorrhage from unspecified posterior communicating artery 
+  - I613 # Nontraumatic intracerebral hemorrhage in brain stem
+  - I6031 # Nontraumatic subarachnoid hemorrhage from right posterior communicating artery 
+  - I614 # Nontraumatic intracerebral hemorrhage in cerebellum
+  - I6032 # Nontraumatic subarachnoid hemorrhage from left posterior communicating artery
+  - I615 # Nontraumatic intracerebral hemorrhage, intraventricular
+  - I604 # Nontraumatic subarachnoid hemorrhage from basilar artery 
+  - I616 # Nontraumatic intracerebral hemorrhage, multiple localized
+  - I6050 # Nontraumatic subarachnoid hemorrhage from unspecified vertebral artery 
+  - I618 # Other nontraumatic intracerebral hemorrhage
+  - I6051 # Nontraumatic subarachnoid hemorrhage from right vertebral artery 
+  - I619 # Nontraumatic intracerebral hemorrhage, unspecified
+  - I6052 # Nontraumatic subarachnoid hemorrhage from left vertebral artery
