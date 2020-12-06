@@ -28,5 +28,5 @@ def generatePB():
   return numList
 
 if __name__ == "__main__":
-  numList = generatePB() if sys.argv[1] == "PB" else generateMM()
+  numList = generatePB() if len(sys.argv) > 1 and sys.argv[1] == "PB" else generateMM()
   print(", ".join([str(num) for num in numList[:-1]]), " - ", str(numList[-1]))
