@@ -22,11 +22,14 @@ def get_info(file):
       if len(day) == 3:
         days += 1
         for line in fh:
+          print(line)
           if line[0] == '_':
             break
           elif line[0].isdigit():
-            _, project, effort = re.search(r"(\d+).\s+(.+)\:\s*(\d+)", line).groups()
-            info[project]['effort'] += effort
+            _, project, effort = re.search(r"(\d+).\s*(.+)\:\s*(\d+)", line).groups()
+            if 'holiday' in project.lower():
+              project = 'Holiday'
+            info[project]['effort'] += int(effort)
             info[project]['days'] += 1
   
   for proj in info.keys():
@@ -38,4 +41,5 @@ if __name__ == "__main__":
   infile = sys.argv[1]
   info = get_info(infile)
   df = pd.DataFrame.from_dict(info, orient = 'index')
-  df.to_csv("work-summary.csv", sep = ",", header = True, index = False)
+  df['effort%'] = df['effort%'].astype(float)
+  df.sort_values(by = ['effort%'], ascending = False).to_csv("work-summary.csv", sep = ",", header = True, index = True)
